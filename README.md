@@ -80,9 +80,9 @@ The project will connect to MongoDB to let users create data.
 ### Built With
 
 * [![JavaScript][Javascript.io]][Javascript-url]
-* [HTML][HTML-url]
+* [![HTML][HTML.io]][HTML-url]
 * [![Node][Node.io]][Node-url]
-* [Express][Express-url]
+* [![Express][Express.io]][Express-url]
 * [![MongoDB][MongoDB.io]][MongoDB-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
