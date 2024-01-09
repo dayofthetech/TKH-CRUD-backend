@@ -169,10 +169,14 @@ Don't forget to give the project a star! Thanks again!
 [linkedin-url]: https://www.linkedin.com/in/albertoreyes2021/
 [Javascript.io]:https://img.shields.io/badge/logo-javascript-blue?logo=javascript
 [Javascript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+[HTML.io]:https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white
 [HTML-url]:https://developer.mozilla.org/en-US/docs/Web/HTML
 
 [Node.io]:https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
 [Node-url]:https://nodejs.org/en/learn/getting-started/introduction-to-nodejs
+
+[Express.io]:https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
 [Express-url]:https://expressjs.com/
 
 [MongoDB.io]:https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white
