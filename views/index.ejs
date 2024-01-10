@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKH CRUD</title>
+</head>
+<body>
+
+    <h1>This is my CRUD update app</h1>
+    <button id="update-button">Replace password</button>
+    <form action="/users" method="POST">
+        <input type="text" id="username" placeholder="Username" name="username" />
+        <input type="text" id="password" placeholder="Password" name="password" />
+        <button type="submit">Submit</button>
+      </form>
+      <ul class="users">
+        <% for(var i=0; i < usersCollection.length; i++) {%>
+            <li class="user">
+                <!-- Output name from the iterated user object -->
+                <span>
+                    <%= usersCollection[i].username %>
+                </span>:
+                <!-- Output quote from the iterated user object -->
+                <span>
+                    <%= usersCollection[i].password %>
+                </span>
+            </li>
+            <% } %>
+      </ul>
+</body>
+</html>
