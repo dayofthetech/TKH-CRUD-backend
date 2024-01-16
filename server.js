@@ -6,10 +6,6 @@ const PORT = 3000;
 require('dotenv').config({path: '.env'})
 
 
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/index.html');
-})
-
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))

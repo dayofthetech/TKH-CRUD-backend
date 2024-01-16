@@ -95,6 +95,15 @@ The project will connect to MongoDB to let users create data.
 To start the project, you will need a dedicated directory. Once create it run
 npm init
 
+Install MongoDB by running the npm install mongodb --save command
+
+Install Nodemon by running npm install nodemon --save-dev
+
+You will need to connect the MongoDB clusterID but you don't want to upload the key to the repo.
+So you will need to create a .env file and inside paste your key
+
+Make sure you also have your gitignore dir with the correct files so to avoid any security compromise.
+
 
 ### Prerequisites
 
