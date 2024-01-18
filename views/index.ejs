@@ -12,8 +12,9 @@
     <form action="/users" method="POST">
         <input type="text" id="username" placeholder="Username" name="username" />
         <input type="text" id="password" placeholder="Password" name="password" />
-        <button type="submit">Submit</button>
-      </form>
+        <button type="submit">Submit User</button>
+    </form>
+    <button id="delete-button">Delete User</button>
       <ul class="users">
         <% for(var i=0; i < usersCollection.length; i++) {%>
             <li class="user">
@@ -28,5 +29,8 @@
             </li>
             <% } %>
       </ul>
+
+      <!-- why it needs /public path -->
+    <script src="/main.js"></script>
 </body>
 </html>
