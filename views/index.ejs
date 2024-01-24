@@ -7,28 +7,34 @@
 </head>
 <body>
 
-    <h1>This is my CRUD update app</h1>
-    <button id="update-button">Replace password</button>
+    <h1>Enter User</h1>
+
     <form action="/users" method="POST">
         <input type="text" id="username" placeholder="Username" name="username" />
         <input type="text" id="password" placeholder="Password" name="password" />
         <button type="submit">Submit User</button>
     </form>
+    <button id="update-button">Replace password</button>
     <button id="delete-button">Delete User</button>
       <ul class="users">
-        <% for(var i=0; i < usersCollection.length; i++) {%>
-            <li class="user">
-                <!-- Output name from the iterated user object -->
-                <span>
-                    <%= usersCollection[i].username %>
-                </span>:
-                <!-- Output quote from the iterated user object -->
-                <span>
-                    <%= usersCollection[i].password %>
-                </span>
-            </li>
+        <ul class="users">
+            <% if (body.users && body.users.length > 0) { %>
+                <% for(var i=0; i < body.users.length; i++) { %>
+                    <li class="user">
+                        <!-- Output name from the iterated user object -->
+                        <span>
+                            <%= body.users[i].username %>
+                        </span>:
+                        <!-- Output quote from the iterated user object -->
+                        <span>
+                            <%= body.users[i].password %>
+                        </span>
+                    </li>
+                <% } %>
+            <% } else { %>
+                <li>No users available</li>
             <% } %>
-      </ul>
+          </ul>
 
       <!-- why it needs /public path -->
     <script src="/main.js"></script>

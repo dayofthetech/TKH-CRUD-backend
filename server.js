@@ -1,16 +1,59 @@
+// const PrismaClient = require('@prisma/client')
+// const express = require('express');
+// const bodyParser = require('body-parser');
+// const MongoClient = require('mongodb').MongoClient;
+// const app = express();
+// const PORT = 3000;
+// require('dotenv').config({path: '.env'})
+// app.set('view engine', 'ejs')
+// app.use(express.static('public'))
+// app.use(bodyParser.urlencoded({ extended: true}))
+// app.use(bodyParser.json());
+// let usersCollection;
+// const prisma = new PrismaClient();
+
 const express = require('express');
 const bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
+const { MongoClient } = require('mongodb');
+const { PrismaClient } = require('@prisma/client');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: '.env' });
+
 const app = express();
 const PORT = 3000;
-require('dotenv').config({path: '.env'})
 
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: true}))
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-let usersCollection;
+const prisma = new PrismaClient();
+
+
+app.post('/users',(req, res) => {
+    const {username, password} = req.body;
+    prisma.user.create({
+        data: {
+            username,
+            password,
+            Post: {
+                create: {
+                    title: 'My First Post',
+                    body: 'Lots of really cool stuff',
+                },
+            },
+        }
+    })
+    .then(result => {
+        res.redirect('/');
+    })
+    .catch(error => {
+        // handle errors
+        console.error(error);
+        res.status(500).json({error: 'Internal Error'})
+    })
+})
 
 MongoClient.connect(process.env.MONGO_URI)
     .then(client => {
@@ -20,25 +63,27 @@ MongoClient.connect(process.env.MONGO_URI)
     // leaving '' empty works - but if / no work
     // if I add /users no work
     // will remove all /users and leave blank
-    app.get('', (req, res) => {
-        usersCollection
-            .find()
-            .toArray()
+    app.get('/', async (req, res) => {
+        const body = { users: null, posts: null }
+
+        const users = await prisma.user
+        .findMany()
             .then(results => {
-                res.render('index.ejs', {usersCollection: results})
-            })
-            .catch(error => console.log(error))
+                body.users = results;
+        })
+        .catch(error => console.error(error))
+
+        const posts = await prisma.post
+        .findMany()
+            .then(results => {
+                body.posts = results;
+        })
+        .catch(error => console.error(error));
+
+        res.render('index.ejs', {body: body})
     })
 
-    app.post('/users',(req, res) => {
-        usersCollection
-            .insertOne(req.body)
-            .then(result => {
-                res.redirect('/');
-            })
-            .catch(error => console.log(error))
-        console.log(req.body);
-    })
+
 
     app.put('/users', (req, res) => {
         usersCollection
