@@ -21,6 +21,7 @@
             <% if (body.users && body.users.length > 0) { %>
                 <% for(var i=0; i < body.users.length; i++) { %>
                     <li class="user">
+                        <!-- from mongoDB User tab -->
                         <!-- Output name from the iterated user object -->
                         <span>
                             <%= body.users[i].username %>
@@ -35,6 +36,40 @@
                 <li>No users available</li>
             <% } %>
           </ul>
+
+          <!-- render posts -->
+          <!-- When I click post, the route goes to
+        /post and error Cannot POST /post -->
+          <h1>This is POST area</h1>
+          <form action="/posts" method="POST">
+            <input type="text" id="title" placeholder="Title" name="title">
+            <input type="text" id="body" placeholder="Body" name="body">
+            <button type="submit">Post</button>
+        </form>
+        <div>
+
+            <% if (body.posts && body.posts.length > 0) { %>
+                <% for(var i=0; i < body.posts.length; i++) { %>
+                    <li class="post">
+                        <!-- from mongoDB User tab -->
+                        <!-- Output name from the iterated user object -->
+                        <span>
+                            <%= body.posts[i].title %>
+                        </span>:
+                        <!-- Output quote from the iterated user object -->
+                        <span>
+                            <%= body.posts[i].body %>
+                        </span>
+                    </li>
+                <% } %>
+            <% } else { %>
+                <li>No Posts</li>
+            <% } %>
+            <!--  -->
+            <!-- <%= body.posts %> -->
+        </div>
+
+
 
       <!-- why it needs /public path -->
     <script src="/main.js"></script>
